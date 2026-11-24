@@ -1,0 +1,279 @@
+/*
+	Cornell Consulting theme
+	Loaded after main.css (Dimension by HTML5 UP) and overrides it.
+	Change colours / fonts via the variables below.
+*/
+
+:root {
+	--font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Roboto, Arial, sans-serif;
+	--text: #ffffff;
+	--text-muted: rgba(226, 238, 255, 0.78);
+	--accent: #5ccfff;              /* picks up the neon cloud */
+	--accent-soft: rgba(92, 207, 255, 0.14);
+	--panel: rgba(6, 16, 31, 0.62);  /* glass panel behind the header text */
+	--panel-solid: rgba(8, 19, 36, 0.92);
+	--line: rgba(255, 255, 255, 0.16);
+	--radius: 14px;
+}
+
+/* ---------- Typography: calmer, no wide uppercase tracking ---------- */
+
+body, input, select, textarea {
+	font-family: var(--font);
+	font-weight: 400;
+	color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-transform: none;
+	letter-spacing: -0.005em;
+	font-weight: 600;
+}
+
+h1 { letter-spacing: -0.01em; }
+h2 { letter-spacing: -0.005em; }
+
+h1.major, h2.major, h3.major, h4.major, h5.major, h6.major {
+	border-bottom: 2px solid var(--accent);
+}
+
+a { border-bottom-color: rgba(92, 207, 255, 0.5); }
+a:hover { color: var(--accent); }
+
+/* ---------- Background: cropped cloud image, navy overlay ---------- */
+
+#bg:after {
+	background-image: url("../../images/bg-cloud.jpg");
+	background-position: center 40%;
+}
+
+#bg:before {
+	/* light vignette only, so the neon cloud stays visible */
+	background-image: radial-gradient(ellipse at center, rgba(4, 12, 26, 0.3) 0%, rgba(4, 12, 26, 0.7) 90%);
+	background-size: auto;
+	background-repeat: no-repeat;
+}
+
+body.is-preload #bg:before { background-color: #000; }
+
+/* ---------- Header ---------- */
+
+#header { background-image: none; }
+
+/* remove the thin vertical connector lines between header blocks */
+#header > *:before { display: none; }
+#header > * { margin-top: 2rem; }
+
+#header .logo {
+	width: 4.5rem;
+	height: 4.5rem;
+	line-height: 4.5rem;
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	background: var(--panel);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
+
+#header .logo .monogram {
+	font-weight: 600;
+	font-size: 1.35rem;
+	letter-spacing: 0.06em;
+	color: var(--accent);
+}
+
+#header .content {
+	width: 100%;
+	max-width: 42rem;
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	background: var(--panel);
+	-webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(12px);
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+#header .content .inner {
+	padding: 2.75rem 3.5rem;
+}
+
+#header .content h1 {
+	font-size: 2.75rem;
+	line-height: 1.15;
+	margin-bottom: 0.75rem;
+}
+
+#header .content p.tagline {
+	text-transform: none;
+	letter-spacing: 0;
+	font-size: 1.15rem;
+	line-height: 1.5;
+	color: var(--text-muted);
+	margin-bottom: 1.75rem;
+}
+
+#header .services {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.5rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#header .services li {
+	padding: 0.3rem 0.85rem;
+	border: 1px solid rgba(92, 207, 255, 0.35);
+	border-radius: 999px;
+	background: var(--accent-soft);
+	font-size: 0.85rem;
+	line-height: 1.5;
+	color: #e6f7ff;
+}
+
+/* Nav (only shows once added back to index.html) */
+#header nav ul {
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	background: var(--panel);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	overflow: hidden;
+}
+
+#header nav ul li { border-left-color: var(--line); }
+
+#header nav ul li a {
+	text-transform: none;
+	letter-spacing: 0.01em;
+	font-size: 0.95rem;
+	min-width: 7rem;
+	padding: 0 1.4rem;
+}
+
+#header nav ul li a:hover { background-color: var(--accent-soft); color: var(--accent); }
+#header nav.use-middle:after { display: none; }
+#header nav.use-middle ul li.is-middle { border-left: 1px solid var(--line); }
+
+@media screen and (max-width: 736px) {
+	#header .content .inner { padding: 2rem 1.5rem; }
+	#header .content h1 { font-size: 2rem; }
+	#header .content p.tagline { font-size: 1rem; }
+	#header .logo { width: 3.75rem; height: 3.75rem; line-height: 3.75rem; }
+	#header .logo .monogram { font-size: 1.1rem; }
+}
+
+@media screen and (max-width: 480px) {
+	#header .content .inner { padding: 1.75rem 1.25rem; }
+	#header .content h1 { font-size: 1.75rem; }
+}
+
+/* ---------- Articles (pop-up sections) ---------- */
+
+#main article {
+	background-color: var(--panel-solid);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+#main article p { color: var(--text-muted); }
+
+/* Contact card */
+.contact-card {
+	display: flex;
+	align-items: center;
+	gap: 1.75rem;
+	margin-bottom: 2rem;
+}
+
+.contact-card .avatar {
+	width: 7rem;
+	height: 7rem;
+	flex-shrink: 0;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid var(--accent);
+	box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.contact-card h3 {
+	font-size: 1.35rem;
+	margin: 0 0 0.6rem 0;
+}
+
+.contact-links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.contact-links li {
+	padding: 0;
+	margin: 0.35rem 0;
+}
+
+.contact-links a {
+	border-bottom: 0;
+	color: var(--text-muted);
+	word-break: break-word;
+}
+
+.contact-links a:hover { color: var(--accent); }
+
+.contact-links .icon {
+	display: inline-block;
+	width: 1.5rem;
+	color: var(--accent);
+}
+
+@media screen and (max-width: 480px) {
+	.contact-card { flex-direction: column; text-align: center; gap: 1.25rem; }
+}
+
+/* ---------- Buttons & forms ---------- */
+
+input[type="submit"], input[type="reset"], input[type="button"], button, .button {
+	text-transform: none;
+	letter-spacing: 0.01em;
+	font-weight: 600;
+	font-size: 0.9rem;
+	border-radius: 999px;
+}
+
+input[type="submit"].primary, input[type="reset"].primary, input[type="button"].primary,
+button.primary, .button.primary {
+	background-color: var(--accent);
+	color: #06101f !important;
+}
+
+input[type="submit"].primary:hover, button.primary:hover, .button.primary:hover {
+	background-color: #8adfff !important;
+}
+
+label {
+	text-transform: none;
+	letter-spacing: 0;
+	font-size: 0.9rem;
+}
+
+input[type="text"], input[type="password"], input[type="email"], select, textarea {
+	border-radius: 8px;
+	border-color: var(--line);
+}
+
+input:focus, select:focus, textarea:focus {
+	border-color: var(--accent) !important;
+	box-shadow: 0 0 0 1px var(--accent) !important;
+}
+
+/* ---------- Footer ---------- */
+
+#footer .copyright {
+	text-transform: none;
+	letter-spacing: 0.02em;
+	font-size: 0.8rem;
+	color: rgba(255, 255, 255, 0.85);
+	text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
